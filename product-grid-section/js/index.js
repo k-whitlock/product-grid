@@ -4,9 +4,10 @@ async function getData() {
     try {
         const response = await fetch('https://www.greatfrontend.com/api/projects/challenges/e-commerce/products');
         const result = await response.json();
-        console.log(result);
+        console.log(result, 'products result');
         const products = result.data;
-        console.log(products);
+        console.log(products, 'products data');
+        
         products.forEach(product => {
             let cardHtml = 
             `
@@ -16,6 +17,7 @@ async function getData() {
                         <p class="text-xs text-neutral-500">black</p>
                         <h2 class="text-2xl pt-2 pb-4">${product.name}</h2>
                         <p class="text-sm text-neutral-500">$${product.priceRange.highest}</p>
+                        <button class="rounded-full border border-gray-400 size-4" style="background-color:${product.colors[0]}">
                     </div>
                 </div>
             
